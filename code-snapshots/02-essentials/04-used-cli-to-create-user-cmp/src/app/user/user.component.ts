@@ -5,6 +5,7 @@ import {Component, Input, Output, EventEmitter} from '@angular/core'
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
+
 export class UserComponent {
   @Input({required: true}) user!: {
     id: string,
