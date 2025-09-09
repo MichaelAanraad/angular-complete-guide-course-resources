@@ -5,6 +5,8 @@ import {UserComponent} from "./user/user.component";
 import {DUMMY_USERS} from "./dummy-users";
 import {TasksComponent} from "./tasks/tasks.component";
 
+interface User { id: string; name: string; avatar: string; }
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,7 +20,7 @@ import {TasksComponent} from "./tasks/tasks.component";
 })
 export class AppComponent {
   users = DUMMY_USERS;
-  selectedUser: { id: string; name: string; avatar: string; } | undefined;
+  selectedUser: User | undefined;
 
   onSelectUser(id : string){
     this.selectedUser = DUMMY_USERS.find(user => user.id == id);
