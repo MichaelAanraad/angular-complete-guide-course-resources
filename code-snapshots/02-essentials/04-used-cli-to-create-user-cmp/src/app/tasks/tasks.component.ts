@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
 import {task} from "./task/task.model";
 import {NewTaskComponent} from "./new-task/new-task.component";

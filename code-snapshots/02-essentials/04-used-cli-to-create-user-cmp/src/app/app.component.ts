@@ -14,8 +14,7 @@ import {task} from "./tasks/task/task.model";
   imports: [
     HeaderComponent,
     UserComponent,
-    TasksComponent,
-    NewTaskComponent
+    TasksComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
