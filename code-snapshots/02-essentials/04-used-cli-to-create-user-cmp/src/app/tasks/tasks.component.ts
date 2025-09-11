@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
-import {task} from "./task/task.model";
+import {newTaskData, task} from "./task/task.model";
 import {NewTaskComponent} from "./new-task/new-task.component";
 
 @Component({
@@ -26,6 +26,18 @@ export class TasksComponent {
 
   onStartAddTask(){
     this.isAddingTask = true;
+  }
+
+  onAddTask(newTask: newTaskData){
+    this.tasks.push({
+        id : this.getNewTaskId(),
+        userId : this.userId,
+        title : newTask.title,
+        summary : newTask.summary,
+        dueDate : newTask.dueDate
+      })
+
+    this.isAddingTask = false;
   }
 
   getNewTaskId() : string {
