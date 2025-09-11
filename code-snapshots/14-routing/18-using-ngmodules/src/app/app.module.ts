@@ -16,20 +16,23 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    UserTasksComponent,
-    UsersComponent,
-    UserComponent,
-    TasksComponent,
-    TaskComponent,
-    NoTaskComponent,
-    NewTaskComponent,
-    CardComponent,
-    NotFoundComponent,
-  ],
-  imports: [BrowserModule, FormsModule, AppRoutingModule],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        UserTasksComponent,
+        UsersComponent,
+        UserComponent,
+        TasksComponent,
+        TaskComponent,
+        NoTaskComponent,
+        NewTaskComponent,
+        CardComponent,
+        NotFoundComponent,
+    ],
+    imports: [BrowserModule, FormsModule, AppRoutingModule],
+    bootstrap: [AppComponent],
+    exports: [
+        CardComponent
+    ]
 })
 export class AppModule {}
