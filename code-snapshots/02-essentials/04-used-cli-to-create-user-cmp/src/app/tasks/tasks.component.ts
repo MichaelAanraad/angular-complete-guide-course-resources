@@ -19,6 +19,10 @@ export class TasksComponent {
   get userTasks() {
     return this.tasks.filter(task => task.userId == this.userId)
   }
+
+  onCompletedTask(id: string) : void {
+    this.tasks = this.tasks.filter((task) => task.id != id)
+  }
 }
 
 const dummyTasks: task[] = [
