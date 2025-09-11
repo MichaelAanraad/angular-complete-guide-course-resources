@@ -5,7 +5,7 @@ import {UserComponent} from "./user/user.component";
 import {DUMMY_USERS} from "./dummy-users";
 import {TasksComponent} from "./tasks/tasks.component";
 import {User} from "./user/user.model";
-import {NewTaskComponent} from "./new-task/new-task.component";
+import {NewTaskComponent} from "./tasks/new-task/new-task.component";
 import {task} from "./tasks/task/task.model";
 
 @Component({
@@ -28,13 +28,5 @@ export class AppComponent {
 
   onSelectUser(id : string){
     this.selectedUser = DUMMY_USERS.find(user => user.id == id);
-  }
-
-  onTaskAdd(id: string){
-    this.newTaskId = id;
-  }
-
-  onTaskCreation(newTask: task){
-
   }
 }
