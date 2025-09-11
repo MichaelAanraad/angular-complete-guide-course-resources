@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {TaskComponent} from "./task/task.component";
 import {task} from "./task/task.model";
 
@@ -14,10 +14,25 @@ import {task} from "./task/task.model";
 export class TasksComponent {
   @Input({required: true}) userId!: string;
   @Input({required: true}) name!: string;
+  @Input() newTask: task | undefined;
+  @Output() add = new EventEmitter();
+
   tasks = dummyTasks;
 
   get userTasks() {
     return this.tasks.filter(task => task.userId == this.userId)
+  }
+
+  onAddTask(){
+    this.add.emit(this.getNewTaskId())
+  }
+
+  getNewTaskId() : string {
+    let lastId = this.tasks[this.tasks.length -1].id
+    let lastIdIntString = lastId.slice(1);
+    let idInt = parseInt(lastIdIntString, 10);
+
+    return 't' + idInt+1;
   }
 
   onCompletedTask(id: string) : void {
