@@ -5,8 +5,6 @@ import {UserComponent} from "./user/user.component";
 import {DUMMY_USERS} from "./dummy-users";
 import {TasksComponent} from "./tasks/tasks.component";
 import {User} from "./user/user.model";
-import {NewTaskComponent} from "./tasks/new-task/new-task.component";
-import {task} from "./tasks/task/task.model";
 
 @Component({
   selector: 'app-root',
@@ -22,8 +20,6 @@ import {task} from "./tasks/task/task.model";
 export class AppComponent {
   users = DUMMY_USERS;
   selectedUser: User | undefined;
-  newTaskId: string | undefined;
-  newTask: task | undefined;
 
   onSelectUser(id : string){
     this.selectedUser = DUMMY_USERS.find(user => user.id == id);
