@@ -21,19 +21,13 @@ export class TasksComponent {
 
   constructor(private tasksService : tasksService) {  }
 
-
   get selectedUserTasks() {
     return this.tasksService.getUserTasks(this.userId);
   }
 
-
   onAddTask(newTask: newTaskData){
     this.tasksService.AddTask(newTask, this.userId)
     this.isAddingTask = false;
-  }
-
-  onCompletedTask(id: string) : void {
-    this.tasksService.deleteTask(id);
   }
 
   onStartAddTask(){

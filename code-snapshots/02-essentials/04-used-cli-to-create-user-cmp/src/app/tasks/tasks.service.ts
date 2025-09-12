@@ -4,32 +4,6 @@ import {Injectable} from "@angular/core";
 @Injectable({providedIn: 'root'})
 export class tasksService{
 
-  getUserTasks(userId: string) {
-    return this.tasks.filter(task => task.userId == userId)
-  }
-
-  deleteTask(id: string) : void {
-    this.tasks = this.tasks.filter((task) => task.id != id)
-  }
-
-  AddTask(newTask: newTaskData, userId: string){
-    this.tasks.push({
-      id : this.getNewTaskId(),
-      userId : userId,
-      title : newTask.title,
-      summary : newTask.summary,
-      dueDate : newTask.dueDate
-    })
-  }
-
-  getNewTaskId() : string {
-    let lastId = this.tasks[this.tasks.length -1].id
-    let lastIdIntString = lastId.slice(1);
-    let idInt = parseInt(lastIdIntString, 10);
-
-    return 't' + idInt+1;
-  }
-
   private tasks : task[] = [
     {
       id: 't1',
@@ -55,4 +29,44 @@ export class tasksService{
       dueDate: '2024-06-15',
     },
   ]
+
+  constructor() {
+    const tasks = localStorage.getItem('tasks');
+
+    if (tasks){
+      this.tasks = JSON.parse(tasks);
+    }
+  }
+
+  getUserTasks(userId: string) {
+    return this.tasks.filter(task => task.userId == userId)
+  }
+
+  removeTask(id: string) : void {
+    this.tasks = this.tasks.filter((task) => task.id != id)
+    this.saveTasks()
+  }
+
+  AddTask(newTask: newTaskData, userId: string){
+    this.tasks.push({
+      id : this.getNewTaskId(),
+      userId : userId,
+      title : newTask.title,
+      summary : newTask.summary,
+      dueDate : newTask.dueDate
+    })
+    this.saveTasks()
+  }
+
+  getNewTaskId() : string {
+    let lastId = this.tasks[this.tasks.length -1].id
+    let lastIdIntString = lastId.slice(1);
+    let idInt = parseInt(lastIdIntString, 10);
+
+    return 't' + idInt+1;
+  }
+
+  private saveTasks(){
+    localStorage.setItem('tasks', JSON.stringify(this.tasks))
+  }
 }
