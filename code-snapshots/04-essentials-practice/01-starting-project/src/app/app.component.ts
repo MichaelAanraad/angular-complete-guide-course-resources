@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import {UserInputComponent} from "./user-input/user-input.component";
 import {InvestmentResultsComponent} from "./investment-results/investment-results.component";
 import {HeaderComponent} from "./header/header.component";
+import {UserInput} from "./user-input/user-input.model";
 
 @Component({
   selector: 'app-root',
@@ -14,4 +15,6 @@ import {HeaderComponent} from "./header/header.component";
     HeaderComponent
   ]
 })
-export class AppComponent {}
+export class AppComponent {
+  userInput!: UserInput
+}
